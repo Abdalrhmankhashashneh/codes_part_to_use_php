@@ -30,5 +30,22 @@
              <li>usernaem : {{ $user->name }} , user_email : {{ $user->email }}</li>
         @endforeach
         </ul>
+        <form action="{{ url('add_user') }}"  method="POST" >
+            @csrf
+            <h1>add user</h1>
+            <input type="text" name="name" id="name">
+            <input type="email" name="email" id="email">
+            <input type="hidden" name="password" id="password" value="123456">
+            <button type="submit">save user</button>
+
+        </form>
+        <form action="{{ route('add_exel_users') }}" method="POST" enctype="multipart/form-data" >
+            @csrf
+            <input type="file" name="exel_users_file" id="exel_users_file">
+
+            <button type="submit">save file</button>
+
+        </form>
+        <a href="{{ route('generate-sample-csv') }}" class="btn">downloade sample </a>
     </body>
 </html>

@@ -12,5 +12,13 @@ class SiteControler extends Controller
         $users = User::all();
         return view('welcome' , compact('users'));
     }
-
+    public function add_user(Request $request){
+        $data = array(
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        );
+        user::create($data);
+        return redirect()->back();
+    }
 }
